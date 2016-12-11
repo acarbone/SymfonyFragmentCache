@@ -1,0 +1,14 @@
+services:
+    fragment_cache_event_listener:
+        class: FragmentCache\EventListener\RequestListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+        arguments: 
+            - @annotation_reader
+            - @fragment_cache_cache_driver
+
+    fragment_cache_cache_driver:
+        class: FragmentCache\Cache\Cache
+        arguments:
+            - @stash.default_cache
