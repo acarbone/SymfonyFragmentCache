@@ -11,4 +11,4 @@ services:
     fragment_cache_cache_driver:
         class: FragmentCache\Cache\Cache
         arguments:
-            - @stash.default_cache
+            - %fragment_cache.driver%
